@@ -1,0 +1,17 @@
+{
+  "name": "azurepr",
+  "owner": {
+    "name": "rosdyana",
+    "url": "https://github.com/rosdyana"
+  },
+  "metadata": {
+    "description": "Claude Code plugin for creating Azure DevOps / TFS pull requests."
+  },
+  "plugins": [
+    {
+      "name": "azurepr",
+      "source": "./",
+      "description": "Interactively create pull requests with required reviewers on Azure DevOps Server / TFS (and Azure DevOps Services) repos."
+    }
+  ]
+}

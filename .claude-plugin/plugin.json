@@ -1,0 +1,58 @@
+{
+  "name": "azurepr",
+  "version": "1.0.0",
+  "description": "Interactively create pull requests with required reviewers on Azure DevOps Server / TFS (and Azure DevOps Services) repos.",
+  "author": {
+    "name": "rosdyana",
+    "url": "https://github.com/rosdyana"
+  },
+  "homepage": "https://github.com/rosdyana/azurepr",
+  "repository": "https://github.com/rosdyana/azurepr",
+  "license": "MIT",
+  "keywords": ["azure-devops", "tfs", "pull-request", "code-review"],
+  "userConfig": {
+    "server_url": {
+      "type": "string",
+      "title": "Azure DevOps server URL",
+      "description": "Base URL of your Azure DevOps Server / TFS, e.g. https://devops.example.com/tfs (or https://dev.azure.com/your-org). PRs are only created for git remotes under this URL. Leave empty to accept any remote containing /_git/.",
+      "required": false,
+      "default": ""
+    },
+    "default_target_branch": {
+      "type": "string",
+      "title": "Default target branch",
+      "description": "Branch suggested first as the PR target, e.g. main, develop or stage.",
+      "required": true,
+      "default": "main"
+    },
+    "api_version": {
+      "type": "string",
+      "title": "REST API version",
+      "description": "Azure DevOps REST api-version. 5.0 works on Azure DevOps Server 2019 and newer; use 6.0 / 7.0 for newer servers or Azure DevOps Services.",
+      "required": true,
+      "default": "5.0"
+    },
+    "styleguide_url": {
+      "type": "string",
+      "title": "Style guide URL (optional)",
+      "description": "If set, the PR description checklist includes 'I have read the StyleGuide' linking here. Leave empty to omit that line.",
+      "required": false,
+      "default": ""
+    },
+    "auth_mode": {
+      "type": "string",
+      "title": "Authentication mode",
+      "description": "'integrated' = Windows integrated auth / Kerberos (no token, domain-joined machines). 'pat' = Personal Access Token read from the environment variable below.",
+      "required": true,
+      "options": ["integrated", "pat"],
+      "default": "integrated"
+    },
+    "pat_env_var": {
+      "type": "string",
+      "title": "PAT environment variable",
+      "description": "Name of the environment variable holding your Personal Access Token (scope: Code read & write). Only used when auth mode is 'pat'. The token itself is never stored by the plugin.",
+      "required": false,
+      "default": "AZURE_DEVOPS_EXT_PAT"
+    }
+  }
+}
